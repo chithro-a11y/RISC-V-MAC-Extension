@@ -13,7 +13,7 @@ module datapath(
     wire [3:0]  alu_ctr;
     wire [1:0]  alu_op;
     wire        memtoreg, memread, memwrite, branch, alusrc, reg_write;
-    wire        zero;
+    wire        zero, n_flag, c_flag, v_flag;
 
     // NEW wires for MAC extension
 
@@ -70,7 +70,7 @@ module datapath(
         .I1(read_data1), .I2(alu_input2),
         .alu_ctr(alu_ctr),
         .out(alu_result),
-        .Z_flag(zero)
+        .Z_flag(zero), .N_flag(n_flag), .C_flag(c_flag), .V_flag(v_flag)
     );
 
     data_memory data_mem_inst (
